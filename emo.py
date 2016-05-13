@@ -24,6 +24,7 @@ if __name__ == '__main__':
 
     # Webcam capture using OpenCV
     video_capture = cv2.VideoCapture(0)
+    font = cv2.FONT_HERSHEY_PLAIN
     num_frames = 0
 
     # Capture, analyze, and send OSC messages in a loop
@@ -31,7 +32,7 @@ if __name__ == '__main__':
     while True:
         # Increment frame count
         num_frames += 1
-        
+
         # Capture frame-by-frame
         ret, frame = video_capture.read()
 
@@ -41,12 +42,13 @@ if __name__ == '__main__':
         # Get landmarks using PyStasm
         landmarks = stasm.search_single(img)
         if len(landmarks) == 0:
-            print("No face found in frame #", num_frames)
+            print "No face found in frame #{}".format(num_frames)
             continue
         else:
             landmarks = stasm.force_points_into_image(landmarks, img)
-            for point in landmarks:
-                img[round(point[1])][round(point[0])] = 255
+            for i,point in enumerate(landmarks):
+                # img[round(point[1])][round(point[0])] = 255
+                cv2.putText(img, str(i), (int(round(point[0])), int(round(point[1]))), font, 1, 255)
 
         # print landmarks
 
