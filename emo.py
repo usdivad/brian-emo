@@ -29,6 +29,9 @@ if __name__ == '__main__':
     # Capture, analyze, and send OSC messages in a loop
     # until 'q' key is pressed
     while True:
+        # Increment frame count
+        num_frames += 1
+        
         # Capture frame-by-frame
         ret, frame = video_capture.read()
 
@@ -39,6 +42,7 @@ if __name__ == '__main__':
         landmarks = stasm.search_single(img)
         if len(landmarks) == 0:
             print("No face found in frame #", num_frames)
+            continue
         else:
             landmarks = stasm.force_points_into_image(landmarks, img)
             for point in landmarks:
@@ -58,9 +62,6 @@ if __name__ == '__main__':
             oscmsg.append(landmark[1]) # y-position
 
         client.send(oscmsg)
-
-        # Increment frame count
-        num_frames += 1
 
         # Break if 'q' key pressed
         if cv2.waitKey(1) & 0xFF == ord('q'):
