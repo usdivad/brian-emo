@@ -49,6 +49,16 @@ if __name__ == '__main__':
         # Show it!
         cv2.imshow("Brian Emo", img)
 
+        # Construct and send OSC message
+        oscmsg = OSC.OSCMessage()
+        oscmsg.setAddress('/wek/inputs')
+
+        for landmark in landmarks:
+            oscmsg.append(landmark[0]) # x-position
+            oscmsg.append(landmark[1]) # y-position
+
+        client.send(oscmsg)
+
         # Increment frame count
         num_frames += 1
 
