@@ -53,7 +53,7 @@ if __name__ == '__main__':
         # print landmarks
 
         # Show it!
-        cv2.imshow("Brian Emo", img)
+        cv2.imshow("", img)
 
         # Construct and send OSC message
         oscmsg = OSC.OSCMessage()
