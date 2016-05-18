@@ -2,7 +2,10 @@
 # =========
 # by David Su http://usdivad.com/
 # 
-# Usage: python emo.py
+# This is the input program that extracts facial landmarks and
+# sends them to Wekinator.
+#
+# Usage: python face.py
 # 
 # :D :P :) :| :( :O
 # 
