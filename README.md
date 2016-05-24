@@ -2,8 +2,13 @@ Brian Emo
 =========
 by David Su http://usdivad.com/
 
+[Brian Emo screenshot](screenshot.png)
+
 ##Description:
 Brian Emo is a personalized music soundtrack, algorithmically composed based on facial expression recognition / face detection. The program uses OpenCV + PyStasm to extract STASM landmarks from live webcam input; these landmarks are fed via PyOSC into Wekinator, which then outputs an emotion classification. A ChucK music generator listens for changes in emotion and updates musical parameters accordingly.
+
+##Demo Video:
+https://vimeo.com/167879128
 
 ##Inputs:
 x and y coordinates of 77 facial landmarks, extracted from *face.py* using the OpenCV and PyStasm libraries.
